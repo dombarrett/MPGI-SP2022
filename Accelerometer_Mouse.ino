@@ -33,15 +33,22 @@ void setup() {
   // take control of the mouse:
   Mouse.begin();
 
+
   //Accelerometer Setup:
   Serial.begin(9600);
-  while (!Serial);
+
+  //while (!Serial);
+  //This line is present in the LSM6DS3 example
+  //But it seems to disturb the mouse functionality
+  //When I've taken it out, it doesn't seem to effect the program otherwise
+  //If you've had troubles with this mouse example, try commenting out this line
 
   if (!IMU.begin()) {
     Serial.println("Failed to initialize IMU!");
 
     while (1);
   }
+  
 }
 
 void loop() {
